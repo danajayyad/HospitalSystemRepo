@@ -66,7 +66,11 @@ public class LoginSystem {
                  User user = users.get(userName);
                  String hashedPassword = hashPassword(password); // Provide original password
                  if (user.getPassword().equals(hashedPassword))
-                     return user; // Return user if username and hashed password match
+                 {	 MyLogger.logger.info("Login Successfully");
+                  		return user;
+                   
+                 // Return user if username and hashed password match
+                 }
                  else
                      MyLogger.logger.warn("Incorrect password. Please try again.");
 

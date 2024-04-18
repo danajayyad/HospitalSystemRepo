@@ -34,5 +34,14 @@ public class Main {
 
         //Polymorphism
         LoginSystem.registerUser(doctor);
+        LoginSystem.login(userName, password);
+        System.out.println("TEST");
+        System.out.println("TEST");
+
+        
+        
+        
+        
+        
     }
 }

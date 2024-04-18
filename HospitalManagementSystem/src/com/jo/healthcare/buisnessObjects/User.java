@@ -19,6 +19,8 @@ public abstract class User{
 	
 	
 	
+	
+	
 	//Constructor 
 	public User(String firstName, String lastName, String userName, String mobileNumber, String email, String password) {
 		this.firstName = firstName;
@@ -125,6 +127,17 @@ public abstract class User{
 	}
 
 	
+	public String getPasswordTestMethod()
+	{
+		return password;
+	}
+
+	
+	
+
+	
+	
+
 	
 	
 	

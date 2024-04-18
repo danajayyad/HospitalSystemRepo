@@ -7,3 +7,10 @@
 14:52:07.084 [main] ERROR com.jo.healthcare.logger.MyLogger - Error message
 15:18:02.221 [main] ERROR com.jo.healthcare.logger.MyLogger - Invalid password format.
 10:34:40.972 [main] ERROR com.jo.healthcare.logger.MyLogger - Invalid password format.
+12:00:28.784 [main] ERROR com.jo.healthcare.logger.MyLogger - Invalid password format.
+12:00:28.793 [main] WARN  com.jo.healthcare.logger.MyLogger - User not found. Please check your username or password.
+12:01:27.862 [main] INFO  com.jo.healthcare.logger.MyLogger - ٌDoctor registered successfully.
+12:06:32.510 [main] ERROR com.jo.healthcare.logger.MyLogger - Invalid password format.
+12:06:32.514 [main] WARN  com.jo.healthcare.logger.MyLogger - User not found. Please check your username or password.
+12:07:15.943 [main] INFO  com.jo.healthcare.logger.MyLogger - ٌDoctor registered successfully.
+12:07:15.947 [main] INFO  com.jo.healthcare.logger.MyLogger - Login Successfully
