@@ -7,16 +7,17 @@ import java.time.LocalDateTime;
 public class Appointment {
 
 	    private LocalDateTime appointmentDateTime;
-	    private Doctor doctor;
-	    private Patient patient;
+	    private String appointmentId;
+	    private String doctorId;
+	    private String patientId;
 	    private String appointmentType;
 	    private int duration; //in minutes
 
 
-	    public Appointment(LocalDateTime appointmentDateTime, Doctor doctor, Patient patient, String appointmentType, int duration) {
+	    public Appointment(LocalDateTime appointmentDateTime, String doctor_id, String patient_id, String appointmentType, int duration) {
 	        this.appointmentDateTime = appointmentDateTime;
-	        this.doctor = doctor;
-	        this.patient = patient;
+	        this.doctorId = doctor_id;
+	        this.patientId = patient_id;
 	        this.appointmentType = appointmentType;
 	        this.duration = duration;
 	    }
@@ -30,20 +31,20 @@ public class Appointment {
 	        this.appointmentDateTime = appointmentDateTime;
 	    }
 
-	    public Doctor getDoctor() {
-	        return doctor;
+	    public String getDoctorId() {
+	        return doctorId;
 	    }
 
-	    public void setDoctor(Doctor doctor) {
-	        this.doctor = doctor;
+	    public void setDoctorId(String doctorId) {
+	        this.doctorId = doctorId;
 	    }
 
-	    public Patient getPatient() {
-	        return patient;
+	    public String getPatientId() {
+	        return patientId;
 	    }
 
-	    public void setPatient(Patient patient) {
-	        this.patient = patient;
+	    public void setPatient(String patientId) {
+	        this.patientId = patientId;
 	    }
 
 	    public String getPurpose() {
@@ -55,16 +56,14 @@ public class Appointment {
 	    }
 
 	    
-	    public void displayAppointmentDetails() {
-	    	System.out.println("Appointment Date and Time: " + appointmentDateTime);
-	    	System.out.println("Doctor: " + doctor.getFirstName() + " " + doctor.getLastName());
-	    	System.out.println("Patient: " + patient.getFirstName() + " " + patient.getLastName());
-	    	System.out.println("Purpose: " + appointmentType);
-	    }
 
-
-		public long getDuration() {
+		public int getDuration() {
 			return duration;
+		}
+
+
+		public String getAppointmentId() {
+			return appointmentId;
 		}
 
 

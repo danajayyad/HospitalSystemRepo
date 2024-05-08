@@ -1,29 +1,15 @@
 package com.jo.healthcare.services;
 
-import com.jo.healthcare.buisnessObjects.MedicalRecord;
+import java.sql.SQLException;
+
 
 public interface MedicalRecordServicesInterface {
 
-		public void addMedicalHistory(MedicalRecord medicalRecord ,String history);
-		
-		public void addAllergy(MedicalRecord medicalRecord,String allergy);
-		
-	    public void addMedication(MedicalRecord medicalRecord,String medication);
-	    
-	    public void addTestResult(MedicalRecord medicalRecord ,String testName, String result);
-	    
-	    public void addSurgery(MedicalRecord medicalRecord, String surgery);
-	    
-	    public void removeMedication(MedicalRecord medicalRecord, String medication);
-	   
-	    public void removeAllergy(MedicalRecord medicalRecord, String allergy);
-	    
-	    public void removeTestResult(MedicalRecord medicalRecord, String testName);
-	    
-	    public void removeSurgery(MedicalRecord medicalRecord, String surgery);
-	    
-	    public void viewMedicalRecord(MedicalRecord medicalRecord);
-	    
-	
+	public void addMedicalHistory(String user_id, String history) throws SQLException;
+	public void addMedication(String user_id, String medication) throws SQLException;
+	public void addTestResult(String user_id, String testName, String result) throws SQLException;
+	public void addSurgery(String user_id, String surgery) throws SQLException;
+	public void addAllergy(String user_id, String allergy) throws SQLException ;
+	public void viewMedicalRecord(String user_id) throws SQLException;	
 	
 }

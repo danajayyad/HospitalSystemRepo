@@ -10,10 +10,18 @@ public class Main {
 
     public static void main(String[] args) {
     	
-        Scanner scanner = new Scanner(System.in);
+    	
+    	MySQLConnection mySQLConnection = new MySQLConnection();
+    	mySQLConnection.connect();
+    	
+    	
+    	
+    	
+       Scanner scanner = new Scanner(System.in);
 
-        // Gather doctor details
-        System.out.println("Enter doctor details:");
+        System.out.println("Enter user details:");
+        System.out.println("Enter your role:");
+        String role = scanner.nextLine();
         System.out.print("First name: ");
         String firstName = scanner.nextLine();
         System.out.print("Last name: ");
@@ -30,12 +38,11 @@ public class Main {
         String specialization = scanner.nextLine();
 
         // new Doctor 
-        Doctor doctor = new Doctor(firstName, lastName, userName, mobileNumber, email, password, specialization);
+        User doctor1 = new Doctor(role, firstName, lastName, userName, mobileNumber, email, password, specialization);
 
         //Polymorphism
-        LoginSystem.registerUser(doctor);
+        LoginSystem.registerUser(doctor1);
         LoginSystem.login(userName, password);
-        System.out.println("TEST");
         System.out.println("TEST");
 
         

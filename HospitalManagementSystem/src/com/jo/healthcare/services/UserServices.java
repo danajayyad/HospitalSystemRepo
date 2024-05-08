@@ -1,15 +1,32 @@
 package com.jo.healthcare.services;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.jo.healthcare.buisnessObjects.LoginSystem;
 import com.jo.healthcare.buisnessObjects.User;
 import com.jo.healthcare.logger.MyLogger;
 
 public class UserServices implements UserServicesInterface {
 
+	private Connection conn = LoginSystem.getConn();
+	
     // Method to change contact details
     public  void changeContactDetails(User user, String mobileNumber, String email) 
     {
-        if (user.setEmail(email) && user.setMobileNumber(mobileNumber))
-        	 MyLogger.logger.debug("Contact details updated successfully.");
+        try (PreparedStatement stmt = conn.prepareStatement("UPDATE User SET mobileNumber = ?, email = ? WHERE user_id = ?")) {
+            stmt.setString(1, mobileNumber);
+            stmt.setString(2, email);
+            stmt.setString(3, user.getUserId(user.getUserName() , user.getPassword()));
+            stmt.executeUpdate();
+            MyLogger.logger.info("Contact details updated successfully.");
+            
+        } catch (SQLException e) {
+			e.printStackTrace();
+		}
+        
+
     }
 
     // Method to display contact details
@@ -24,8 +41,15 @@ public class UserServices implements UserServicesInterface {
     // Method to change username
     public  void changeUserName(User user, String newUserName) 
     {
-        user.setUserName(newUserName);
-        MyLogger.logger.info("Username updated successfully.");
+    	try (PreparedStatement stmt = conn.prepareStatement("UPDATE User SET userName = ? WHERE user_id = ?")) {
+            stmt.setString(1, newUserName);
+            stmt.setString(2, user.getUserId(user.getUserName() , user.getPassword()));
+            stmt.executeUpdate();        
+            MyLogger.logger.info("Username updated successfully.");
+            
+    	} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
     }
 }

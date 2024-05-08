@@ -7,8 +7,8 @@ public class Doctor extends User{
 	private Clinic clinic; //Each doctor belongs to one clinic 
 	private String specialization; //Each doctor has a schedule
 	
-	public Doctor(String firstName, String lastName, String userName, String mobileNumber, String email, String password, String specialization){
-		super(firstName,  lastName,  userName,  mobileNumber,  email,  password);
+	public Doctor(String role,String firstName, String lastName, String userName, String mobileNumber, String email, String password, String specialization){
+		super(firstName,  lastName,  userName,  mobileNumber,  email,  password, role);
 		this.specialization = specialization;
 		schedule = new Schedule();
 	}

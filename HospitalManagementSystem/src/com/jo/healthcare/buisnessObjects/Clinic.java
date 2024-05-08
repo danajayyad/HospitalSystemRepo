@@ -55,13 +55,5 @@ public class Clinic {
     }
     
     
-    public void clinicDetails()
-    {
-    	System.out.println("\nClinic Details:");
-    	System.out.println("Name: " + getName());
-    	System.out.println("Address: " + getAddress());
-    	System.out.println("Phone Number: " + getPhoneNumber());
-    	System.out.println("Doctors: " + getDoctors().size());
-        
-    }
+    
 }

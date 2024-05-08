@@ -1,11 +1,15 @@
 package com.jo.healthcare.buisnessObjects;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.jo.healthcare.logger.MyLogger;
 
-public abstract class User{
+public  class User{
 	
 
 
@@ -16,16 +20,18 @@ public abstract class User{
 	private String mobileNumber;
 	private String email;
 	private String password;
+	private String role;
 	
 	
 	
 	
 	
 	//Constructor 
-	public User(String firstName, String lastName, String userName, String mobileNumber, String email, String password) {
+	public User(String firstName, String lastName, String userName, String mobileNumber, String email, String password, String role) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
+		this.role = role;
 		setMobileNumber(mobileNumber);
 		setEmail(email);
 		setPassword(password);
@@ -37,6 +43,22 @@ public abstract class User{
 		this.phoneNumber=phoneNumber;
 	//	this(firstName, lastName,  userName,  mobileNumber,  email,  password);
 	}*/
+	
+	
+	
+	public String getUserId(String userName, String password) throws SQLException {
+	    String userId = null;
+	    try (PreparedStatement stmt = LoginSystem.getConn().prepareStatement("SELECT user_id FROM User WHERE userName = ? AND password = ?")) {
+	        stmt.setString(1, userName);
+	        stmt.setString(2, password);
+	        ResultSet rs = stmt.executeQuery();
+	        if (rs.next()) {
+	            userId = rs.getString("user_id");
+	        }
+	    }
+	    return userId;
+	}
+	
 	
 	//setters and getters
 	public String getFirstName() {
@@ -127,9 +149,14 @@ public abstract class User{
 	}
 
 	
+
 	public String getPasswordTestMethod()
 	{
 		return password;
+	}
+
+	public String getRole() {
+		return role;
 	}
 
 	

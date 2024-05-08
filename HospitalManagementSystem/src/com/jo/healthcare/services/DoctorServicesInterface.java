@@ -1,5 +1,6 @@
 package com.jo.healthcare.services;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import com.jo.healthcare.buisnessObjects.*;
 import com.jo.healthcare.errorHandling.ErrorHandler;
@@ -8,12 +9,12 @@ import com.jo.healthcare.errorHandling.ErrorHandler;
 
 public interface DoctorServicesInterface {
     
-    void displayContactDetails(Doctor doctor);
+	public void displayContactDetails(String userId)throws SQLException;
+	
+	public boolean isAvailable(String doctorId, LocalDateTime appointmentDateTime) throws SQLException;
     
-    boolean isAvailable(Doctor doctor, LocalDateTime appointmentDateTime);
+	public void cancelAppointment(String appointmentId) throws SQLException;
     
-    void cancelAppointment(Doctor doctor, Appointment appointment);
-    
-    public <Appointement> void printSchedule(Doctor doctor) throws ErrorHandler;
+	public void printSchedule(String userId) throws SQLException, ErrorHandler;
 
 }
