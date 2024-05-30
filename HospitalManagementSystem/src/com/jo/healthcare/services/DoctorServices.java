@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 import com.jo.healthcare.errorHandling.ErrorHandler;
+import com.jo.healthcare.main.MySQLConnection;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,18 +17,11 @@ import com.jo.healthcare.buisnessObjects.*;
 
 public class DoctorServices implements DoctorServicesInterface {
 	
-	 private Connection conn;
 	 
-	 public DoctorServices(Connection conn) {
-	        this.conn = conn;
-	    }
-	
-	
-	
-	
+		
 	
 	public void displayContactDetails(String userId) throws SQLException {
-		try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Doctor WHERE user_id = ?")) {
+		try (PreparedStatement stmt = MySQLConnection.getInstance().prepareStatement("SELECT * FROM Doctor WHERE user_id = ?")) {
 	        stmt.setString(1, userId);
 	        ResultSet rs = stmt.executeQuery();
 	        if (rs.next()) {
@@ -50,7 +45,7 @@ public class DoctorServices implements DoctorServicesInterface {
 
 		
 	public boolean isAvailable(String doctorId, LocalDateTime appointmentDateTime) throws SQLException {
-	    try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Appointment WHERE doctor_id = ? AND appointmentDateTime = ?")) {
+	    try (PreparedStatement stmt = MySQLConnection.getInstance().prepareStatement("SELECT * FROM Appointment WHERE doctor_id = ? AND appointmentDateTime = ?")) {
 	        stmt.setString(1, doctorId);
 	        stmt.setString(2, appointmentDateTime.toString());
 	        ResultSet rs = stmt.executeQuery();
@@ -64,7 +59,7 @@ public class DoctorServices implements DoctorServicesInterface {
 		
 		
 	public void cancelAppointment(String appointmentId) throws SQLException {
-	    try (PreparedStatement stmt = conn.prepareStatement("DELETE FROM Appointment WHERE appointment_id = ?")) {
+	    try (PreparedStatement stmt = MySQLConnection.getInstance().prepareStatement("DELETE FROM Appointment WHERE appointment_id = ?")) {
 	        stmt.setString(1, appointmentId);
 	        stmt.executeUpdate();
 	    }
@@ -73,7 +68,7 @@ public class DoctorServices implements DoctorServicesInterface {
 		
 		
 	public void printSchedule(String userId) throws SQLException, ErrorHandler {
-	    try (PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Appointment WHERE doctor_id = ?")) {
+	    try (PreparedStatement stmt = MySQLConnection.getInstance().prepareStatement("SELECT * FROM Appointment WHERE doctor_id = ?")) {
 	        stmt.setString(1, userId);
 	        ResultSet rs = stmt.executeQuery();
 	        System.out.println("Doctor's Schedule:");

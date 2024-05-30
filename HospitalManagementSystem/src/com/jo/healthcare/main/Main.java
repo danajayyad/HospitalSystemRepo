@@ -11,9 +11,7 @@ public class Main {
     public static void main(String[] args) {
     	
     	
-    	MySQLConnection mySQLConnection = new MySQLConnection();
-    	mySQLConnection.connect();
-    	
+    	((MySQLConnection) MySQLConnection.getInstance()).connect();    	
     	
     	
     	

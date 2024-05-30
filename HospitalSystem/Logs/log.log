@@ -1,0 +1,43 @@
+00:54:29.588 [main] ERROR com.jo.healthcare.logger.MyLogger - An error occurred while registering the user: Unknown column 'role' in 'field list'
+java.sql.SQLSyntaxErrorException: Unknown column 'role' in 'field list'
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1054) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1003) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1312) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:988) ~[mysql-connector-j-8.3.0.jar:?]
+	at com.jo.healthcare.buisnessObjects.LoginSystem.registerUser(LoginSystem.java:57) [bin/:?]
+	at com.jo.healthcare.main.Main.main(Main.java:40) [bin/:?]
+00:54:29.635 [main] WARN  com.jo.healthcare.logger.MyLogger - User not found or incorrect password. Please check your credentials.
+01:11:57.970 [main] ERROR com.jo.healthcare.logger.MyLogger - An error occurred while registering the user: No value specified for parameter 8
+java.sql.SQLException: No value specified for parameter 8
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1077) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1003) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1312) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:988) ~[mysql-connector-j-8.3.0.jar:?]
+	at com.jo.healthcare.buisnessObjects.LoginSystem.registerUser(LoginSystem.java:58) [bin/:?]
+	at com.jo.healthcare.main.Main.main(Main.java:44) [bin/:?]
+01:15:32.859 [main] INFO  com.jo.healthcare.logger.MyLogger - User registered successfully.
+01:19:37.464 [main] INFO  com.jo.healthcare.logger.MyLogger - User registered successfully.
+01:34:28.948 [main] ERROR com.jo.healthcare.logger.MyLogger - An error occurred while registering the user: Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement().
+java.sql.SQLException: Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement().
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:98) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:90) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:64) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.StatementImpl.getGeneratedKeys(StatementImpl.java:1385) ~[mysql-connector-j-8.3.0.jar:?]
+	at com.jo.healthcare.buisnessObjects.LoginSystem.registerUser(LoginSystem.java:62) [bin/:?]
+	at com.jo.healthcare.main.Main.main(Main.java:44) [bin/:?]
+01:42:51.539 [main] ERROR com.jo.healthcare.logger.MyLogger - An error occurred while registering the user: Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement().
+java.sql.SQLException: Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement().
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:98) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:90) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:64) ~[mysql-connector-j-8.3.0.jar:?]
+	at mysql.connector.j@8.3.0/com.mysql.cj.jdbc.StatementImpl.getGeneratedKeys(StatementImpl.java:1385) ~[mysql-connector-j-8.3.0.jar:?]
+	at com.jo.healthcare.buisnessObjects.LoginSystem.registerUser(LoginSystem.java:64) [bin/:?]
+	at com.jo.healthcare.main.Main.main(Main.java:44) [bin/:?]
+01:48:42.244 [main] INFO  com.jo.healthcare.logger.MyLogger - User registered successfully.

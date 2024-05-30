@@ -1,7 +1,4 @@
 package com.jo.healthcare.buisnessObjects;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,34 +6,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import com.jo.healthcare.errorHandling.ErrorHandler;
 import com.jo.healthcare.logger.MyLogger;
+import com.jo.healthcare.main.MySQLConnection;
+
 import java.sql.Statement;
 
 
 public class LoginSystem {
-    
-    private static Connection conn; 
-    
-    static {
-        try 
-        {
-            setConn(DriverManager.getConnection("jdbc:mysql://localhost/hospitaldb?" +
-                    "user=root&password=12345678"));
-        } catch (SQLException ex) 
-        {
-            new ErrorHandler("An error occurred establishing the MySQL connection: " + ex.getMessage(), ex);
-        }
-    }
-    
-    // Close MySQL connection
-    public static void closeConnection() {
-        try {
-            if (getConn() != null) {
-                getConn().close();
-            }
-        } catch (SQLException ex) {
-            new ErrorHandler("An error occurred while closing the MySQL connection: " + ex.getMessage(), ex);
-        }
-    }
+        
     
     
     
@@ -48,7 +24,7 @@ public class LoginSystem {
         			{
         		// Insert user data into the database
 		        		String insertUserQuery = "INSERT INTO User (firstName, lastName, userName, mobileNumber, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)";
-		        		PreparedStatement preparedStatement = getConn().prepareStatement(insertUserQuery, Statement.RETURN_GENERATED_KEYS);
+		        		PreparedStatement preparedStatement = MySQLConnection.getInstance().prepareStatement(insertUserQuery, Statement.RETURN_GENERATED_KEYS);
 
 			            preparedStatement.setString(1, user.getFirstName());
 			            preparedStatement.setString(2, user.getLastName());
@@ -76,14 +52,14 @@ public class LoginSystem {
 			            if (user instanceof Doctor) {
 			                Doctor doctor = (Doctor) user;
 			                String insertDoctorQuery = "INSERT INTO Doctor (user_id, specialization) VALUES (?, ?)";
-			                PreparedStatement doctorStatement = getConn().prepareStatement(insertDoctorQuery);
+			                PreparedStatement doctorStatement = MySQLConnection.getInstance().prepareStatement(insertDoctorQuery);
 			                doctorStatement.setInt(1, userId);
 			                doctorStatement.setString(2, doctor.getSpecialization());
 			                doctorStatement.executeUpdate();
 			            } else if (user instanceof Patient) {
 			            	Patient patient = (Patient) user;
 			                String insertPatintQuery = "INSERT INTO Patint (user_id) VALUES (?)";
-			                PreparedStatement doctorStatement = getConn().prepareStatement(insertPatintQuery);
+			                PreparedStatement doctorStatement = MySQLConnection.getInstance().prepareStatement(insertPatintQuery);
 			                doctorStatement.setInt(1, userId);
 			                doctorStatement.executeUpdate();
 			            }
@@ -105,7 +81,7 @@ public class LoginSystem {
         try {
             // Query user data from the database
             String selectUserQuery = "SELECT * FROM User WHERE userName = ? AND password = ?";
-            PreparedStatement preparedStatement = getConn().prepareStatement(selectUserQuery);
+            PreparedStatement preparedStatement = MySQLConnection.getInstance().prepareStatement(selectUserQuery);
             preparedStatement.setString(1, userName);
             preparedStatement.setString(2, hashPassword(password));
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -154,14 +130,5 @@ public class LoginSystem {
 
 
 
-	public static Connection getConn() {
-		return conn;
-	}
-
-
-
-	public static void setConn(Connection conn) {
-		LoginSystem.conn = conn;
-	}
-
+	
 }
